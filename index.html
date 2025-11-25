@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ranking atividades Érika e Vinícius</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <h1>Ranking atividades Érika e Vinícius</h1>
+  </header>
+
+  <main class="container">
+    <!-- Área principal: pergunta + botões -->
+    <section class="main-panel">
+      <h2 class="question">Quem venceu essa semana?</h2>
+      <div class="buttons">
+        <button id="btn-erika" class="btn btn-erika">Érika</button>
+        <button id="btn-vinicius" class="btn btn-vinicius">Vinícius</button>
+      </div>
+
+      <p class="hint">
+        Clique no vencedor da semana para registrar no ranking.
+      </p>
+
+      <div class="controls">
+        <button id="btn-undo" class="btn btn-secondary">
+          ⏪ Desfazer última semana
+        </button>
+        <button id="btn-reset" class="btn btn-danger">
+          🧹 Zerar tudo
+        </button>
+      </div>
+    </section>
+
+    <!-- Ranking lateral -->
+    <aside class="sidebar">
+      <h2>Placar geral</h2>
+
+      <div class="score-board">
+        <div class="score-card erika">
+          <span class="name">Érika</span>
+          <span class="score" id="score-erika">0</span>
+        </div>
+        <div class="score-card vinicius">
+          <span class="name">Vinícius</span>
+          <span class="score" id="score-vinicius">0</span>
+        </div>
+      </div>
+
+      <p class="leader" id="leader-text">
+        Ninguém venceu ainda. Comecem a registrar as semanas! 🏁
+      </p>
+
+      <h3>Histórico de semanas</h3>
+      <ul id="weeks-list" class="weeks-list">
+        <!-- preenchido pelo JavaScript -->
+      </ul>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <p>
+      Feito com ❤️ por Érika e Vinícius · Dados salvos apenas no seu navegador
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
