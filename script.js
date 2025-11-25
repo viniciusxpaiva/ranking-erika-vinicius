@@ -16,7 +16,6 @@ function loadState() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return getInitialState();
     const parsed = JSON.parse(raw);
-    // Garantir estrutura mínima
     if (!parsed.weeks || !parsed.totals) return getInitialState();
     return parsed;
   } catch (e) {
@@ -43,21 +42,36 @@ function computeLeaderText(state) {
 
   const leader = e > v ? "Érika" : "Vinícius";
   const diff = Math.abs(e - v);
-  const emoji = e > v ? "💖" : "🔥";
+  const emoji = e > v ? "🌊" : "🔥";
 
   return `${leader} está na frente por ${diff} vitória(s)! ${emoji}`;
 }
 
 function render(state) {
-  // Atualizar placar
   const scoreErika = document.getElementById("score-erika");
   const scoreVinicius = document.getElementById("score-vinicius");
   const leaderText = document.getElementById("leader-text");
   const weeksList = document.getElementById("weeks-list");
 
+  const cardErika = document.getElementById("card-erika");
+  const cardVinicius = document.getElementById("card-vinicius");
+
   scoreErika.textContent = state.totals.erika;
   scoreVinicius.textContent = state.totals.vinicius;
   leaderText.textContent = computeLeaderText(state);
+
+  // Limpar classes de líder
+  cardErika.classList.remove("is-leading");
+  cardVinicius.classList.remove("is-leading");
+
+  // Destacar quem está na frente
+  const e = state.totals.erika;
+  const v = state.totals.vinicius;
+  if (e > v) {
+    cardErika.classList.add("is-leading");
+  } else if (v > e) {
+    cardVinicius.classList.add("is-leading");
+  }
 
   // Atualizar lista de semanas
   weeksList.innerHTML = "";
@@ -95,7 +109,7 @@ function registerWinner(winnerKey) {
 
   state.weeks.push({
     weekLabel,
-    winner: winnerKey, // "erika" ou "vinicius"
+    winner: winnerKey,
   });
 
   state.totals[winnerKey] += 1;
@@ -107,7 +121,7 @@ function registerWinner(winnerKey) {
 function undoLastWeek() {
   const state = loadState();
   if (state.weeks.length === 0) {
-    alert("Não há semanas para desfazer.");
+    showToast("Não há semanas para desfazer. 😅");
     return;
   }
 
@@ -121,6 +135,7 @@ function undoLastWeek() {
   state.weeks.pop();
   saveState(state);
   render(state);
+  showToast("Última semana desfeita. ⏪");
 }
 
 function resetAll() {
@@ -132,6 +147,36 @@ function resetAll() {
   const state = getInitialState();
   saveState(state);
   render(state);
+  showToast("Placar zerado, nova era começa agora. 🚀");
+}
+
+/* Toast genérico */
+let toastTimeout = null;
+function showToast(message, duration = 2500) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.remove("hidden");
+  toast.classList.add("show");
+
+  if (toastTimeout) {
+    clearTimeout(toastTimeout);
+  }
+
+  toastTimeout = setTimeout(() => {
+    toast.classList.remove("show");
+    toast.classList.add("hidden");
+  }, duration);
+}
+
+/* Popup especial da Érika */
+function openErikaConfirmModal() {
+  const overlay = document.getElementById("confirm-overlay");
+  overlay.classList.remove("hidden");
+}
+
+function closeErikaConfirmModal() {
+  const overlay = document.getElementById("confirm-overlay");
+  overlay.classList.add("hidden");
 }
 
 // Inicialização
@@ -141,8 +186,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnUndo = document.getElementById("btn-undo");
   const btnReset = document.getElementById("btn-reset");
 
-  btnErika.addEventListener("click", () => registerWinner("erika"));
-  btnVinicius.addEventListener("click", () => registerWinner("vinicius"));
+  const btnConfirmErika = document.getElementById("confirm-erika");
+  const btnCancelErika = document.getElementById("cancel-erika");
+
+  // Clique na Érika -> abre modal de confirmação
+  btnErika.addEventListener("click", () => {
+    openErikaConfirmModal();
+  });
+
+  // Confirma Érika
+  btnConfirmErika.addEventListener("click", () => {
+    registerWinner("erika");
+    closeErikaConfirmModal();
+    showToast("Olha só, vitória da Érika confirmada! 🌊");
+  });
+
+  // Cancela Érika
+  btnCancelErika.addEventListener("click", () => {
+    closeErikaConfirmModal();
+    showToast("Ufa! Ainda bem que você conferiu. 😏");
+  });
+
+  // Clique no Vinícius -> registra direto + mensagem divertida
+  btnVinicius.addEventListener("click", () => {
+    registerWinner("vinicius");
+    showToast("Mais uma vitória dele hein, como pode? 😅");
+  });
+
   btnUndo.addEventListener("click", undoLastWeek);
   btnReset.addEventListener("click", resetAll);
 

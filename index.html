@@ -7,64 +7,110 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="top-bar">
-    <h1>Ranking atividades Érika e Vinícius</h1>
-  </header>
+  <div class="app-shell">
+    <header class="top-bar">
+      <h1>Ranking atividades Érika e Vinícius</h1>
+      <p class="top-subtitle">Desafio semanal de atividades 💪</p>
+    </header>
 
-  <main class="container">
-    <!-- Área principal: pergunta + botões -->
-    <section class="main-panel">
-      <h2 class="question">Quem venceu essa semana?</h2>
-      <div class="buttons">
-        <button id="btn-erika" class="btn btn-erika">Érika</button>
-        <button id="btn-vinicius" class="btn btn-vinicius">Vinícius</button>
-      </div>
+    <main class="card">
+      <!-- Bloco principal -->
+      <section class="card-section">
+        <h2 class="question">Quem venceu essa semana?</h2>
 
-      <p class="hint">
-        Clique no vencedor da semana para registrar no ranking.
-      </p>
+        <div class="buttons">
+          <button id="btn-erika" class="btn btn-erika">
+            <img src="erika.png" alt="Foto de Érika" class="avatar" />
+            <span>Érika</span>
+          </button>
 
-      <div class="controls">
-        <button id="btn-undo" class="btn btn-secondary">
-          ⏪ Desfazer última semana
-        </button>
-        <button id="btn-reset" class="btn btn-danger">
-          🧹 Zerar tudo
-        </button>
-      </div>
-    </section>
-
-    <!-- Ranking lateral -->
-    <aside class="sidebar">
-      <h2>Placar geral</h2>
-
-      <div class="score-board">
-        <div class="score-card erika">
-          <span class="name">Érika</span>
-          <span class="score" id="score-erika">0</span>
+          <button id="btn-vinicius" class="btn btn-vinicius">
+            <img src="vinicius.jpeg" alt="Foto de Vinícius" class="avatar" />
+            <span>Vinícius</span>
+          </button>
         </div>
-        <div class="score-card vinicius">
-          <span class="name">Vinícius</span>
-          <span class="score" id="score-vinicius">0</span>
+
+        <p class="hint">
+          Toque em quem mandou melhor essa semana para registrar no ranking.
+        </p>
+
+        <div class="controls">
+          <button id="btn-undo" class="btn btn-secondary">
+            ⏪ Desfazer última semana
+          </button>
+          <button id="btn-reset" class="btn btn-danger">
+            🧹 Zerar tudo
+          </button>
         </div>
-      </div>
+      </section>
 
-      <p class="leader" id="leader-text">
-        Ninguém venceu ainda. Comecem a registrar as semanas! 🏁
+      <div class="divider"></div>
+
+      <!-- Placar geral -->
+      <section class="card-section">
+        <h2 class="section-title">Placar geral</h2>
+
+        <div class="score-board">
+          <div id="card-erika" class="score-card erika">
+            <div class="score-left">
+              <span class="dot dot-erika"></span>
+              <span class="name">Érika</span>
+            </div>
+            <span class="score" id="score-erika">0</span>
+          </div>
+
+          <div id="card-vinicius" class="score-card vinicius">
+            <div class="score-left">
+              <span class="dot dot-vinicius"></span>
+              <span class="name">Vinícius</span>
+            </div>
+            <span class="score" id="score-vinicius">0</span>
+          </div>
+        </div>
+
+        <p class="leader" id="leader-text">
+          Ninguém venceu ainda. Comecem a registrar as semanas! 🏁
+        </p>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Histórico -->
+      <section class="card-section">
+        <h2 class="section-title">Histórico de semanas</h2>
+        <ul id="weeks-list" class="weeks-list">
+          <!-- preenchido pelo JavaScript -->
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Feito com ❤️ por Érika e Vinícius · Dados salvos apenas no seu navegador
       </p>
+    </footer>
+  </div>
 
-      <h3>Histórico de semanas</h3>
-      <ul id="weeks-list" class="weeks-list">
-        <!-- preenchido pelo JavaScript -->
-      </ul>
-    </aside>
-  </main>
+  <!-- Overlay de confirmação para Érika -->
+  <div id="confirm-overlay" class="overlay hidden">
+    <div class="modal">
+      <p class="modal-text">
+        Duvido que a Érika ganhou a semana... 🤨<br />
+        Tem certeza que não clicou errado?
+      </p>
+      <div class="modal-buttons">
+        <button id="confirm-erika" class="btn btn-erika small">
+          Sim, tenho certeza ✅
+        </button>
+        <button id="cancel-erika" class="btn btn-secondary small">
+          Ops, cliquei errado 🙈
+        </button>
+      </div>
+    </div>
+  </div>
 
-  <footer class="footer">
-    <p>
-      Feito com ❤️ por Érika e Vinícius · Dados salvos apenas no seu navegador
-    </p>
-  </footer>
+  <!-- Toast para mensagens rápidas (ex: Vinícius) -->
+  <div id="toast" class="toast hidden"></div>
 
   <script src="script.js"></script>
 </body>
