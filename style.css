@@ -46,6 +46,7 @@ body {
 
 /* Card principal */
 .card {
+  position: relative;
   background: rgba(15, 23, 42, 0.94);
   border-radius: 24px;
   padding: 1.3rem 1.2rem 1.4rem;
@@ -78,7 +79,7 @@ body {
 
 /* Títulos */
 .question {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   text-align: center;
   font-weight: 700;
   color: #e5e7eb;
@@ -400,37 +401,77 @@ body {
   }
 }
 
-.controls-links {
-  margin-top: 0.35rem;
-  text-align: center;
+/* Botão de opções (⋯) */
+.icon-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(15, 23, 42, 0.95);
+  color: #9ca3af;
+  font-size: 1.3rem;
+  line-height: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 0.25rem;
-  flex-wrap: wrap;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+  transition: background 0.15s ease, transform 0.1s ease, color 0.15s ease;
 }
 
-.link-btn {
+.icon-button:hover {
+  background: #020617;
+  color: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+.icon-button:active {
+  transform: translateY(1px) scale(0.97);
+}
+
+/* Dropdown do menu */
+.menu-dropdown {
+  position: absolute;
+  top: 44px;
+  right: 10px;
+  background: #020617;
+  border-radius: 14px;
+  padding: 0.4rem 0.2rem;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  min-width: 190px;
+  display: none;           /* escondido por padrão */
+  flex-direction: column;
+  z-index: 40;
+}
+
+.menu-dropdown.open {
+  display: flex;           /* aparece quando tem a classe .open */
+}
+
+/* Itens do menu */
+.menu-item {
   background: none;
   border: none;
-  color: #9ca3af;
-  font-size: 0.78rem;
-  cursor: pointer;
-  padding: 0.1rem 0.2rem;
-  transition: color 0.15s ease, transform 0.1s ease, opacity 0.1s ease;
-}
-
-.link-btn:hover {
   color: #e5e7eb;
-  transform: translateY(-0.5px);
+  text-align: left;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
-.link-btn:active {
-  opacity: 0.8;
-  transform: translateY(0.5px);
+.menu-item:hover {
+  background: #0b1120;
 }
 
-.sep {
-  color: #475569;
-  font-size: 0.75rem;
+.menu-item:first-child {
+  border-bottom: 1px solid #111827;
 }

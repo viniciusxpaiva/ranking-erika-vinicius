@@ -220,3 +220,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const initialState = loadState();
   render(initialState);
 });
+
+  const optionsButton = document.getElementById("options-button");
+  const optionsMenu = document.getElementById("options-menu");
+
+  // Abre/fecha o menu ao clicar no botão ⋯
+  optionsButton.addEventListener("click", (event) => {
+    event.stopPropagation(); // evita fechar imediatamente
+    optionsMenu.classList.toggle("open");
+  });
+
+  // Evita que clique dentro do menu feche ele imediatamente
+  optionsMenu.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
+
+  // Clicar em qualquer lugar fora fecha o menu
+  document.addEventListener("click", () => {
+    optionsMenu.classList.remove("open");
+  });
+

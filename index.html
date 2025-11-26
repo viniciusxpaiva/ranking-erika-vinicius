@@ -1,119 +1,131 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Ranking atividades Érika e Vinícius</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <title>Ranking atividades Érika e Vinícius</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <div class="app-shell">
-    <header class="top-bar">
-      <h1>Ranking atividades Érika e Vinícius</h1>
-      <p class="top-subtitle">Desafio semanal de atividades</p>
-    </header>
+    <div class="app-shell">
+        <header class="top-bar">
+            <h1>Ranking atividades Érika e Vinícius</h1>
+            <p class="top-subtitle">Desafio semanal de atividades</p>
+        </header>
 
-    <main class="card">
-      <!-- Bloco principal -->
-      <section class="card-section">
-        <h2 class="question">Quem venceu essa semana?</h2>
+        <main class="card">
+            <!-- Bloco principal -->
+            <main class="card">
+                <!-- Botão de menu (⋯) + dropdown -->
+                <button id="options-button" class="icon-button" aria-label="Mais opções">
+                    ⋯
+                </button>
+                <div class="menu-dropdown" id="options-menu">
+                    <button id="btn-undo" class="menu-item">
+                        ⏪ Desfazer última semana
+                    </button>
+                    <button id="btn-reset" class="menu-item">
+                        🧹 Zerar tudo
+                    </button>
+                </div>
 
-        <div class="buttons">
-          <button id="btn-erika" class="btn btn-erika">
-            <img src="erika.png" alt="Foto de Érika" class="avatar" />
-            <span>Érika</span>
-          </button>
+                <!-- Bloco principal -->
+                <section class="card-section">
+                    <h2 class="question">Quem venceu essa semana?</h2>
 
-          <button id="btn-vinicius" class="btn btn-vinicius">
-            <img src="vinicius.jpeg" alt="Foto de Vinícius" class="avatar" />
-            <span>Vinícius</span>
-          </button>
-        </div>
+                    <div class="buttons">
+                        <button id="btn-erika" class="btn btn-erika">
+                            <img src="erika.png" alt="Foto de Érika" class="avatar" />
+                            <span>Érika</span>
+                        </button>
 
-        <p class="hint">
-          Toque em quem venceu essa semana para registrar no ranking.
-        </p>
+                        <button id="btn-vinicius" class="btn btn-vinicius">
+                            <img src="vinicius.jpeg" alt="Foto de Vinícius" class="avatar" />
+                            <span>Vinícius</span>
+                        </button>
+                    </div>
 
-        <div class="controls-links">
-            <button id="btn-undo" class="link-btn">
-                ⏪ Desfazer última semana
-            </button>
-            <span class="sep">·</span>
-            <button id="btn-reset" class="link-btn">
-                🧹 Zerar tudo
-            </button>
-        </div>
+                    <p class="hint">
+                        Toque em quem venceu essa semana para registrar no ranking.
+                    </p>
 
-      </section>
+                    <!-- ❌ aqui você pode remover o antigo bloco de controls/controls-links -->
+                </section>
 
-      <div class="divider"></div>
+                <!-- resto do card (placar, histórico, etc.) continua igual -->
+            </main>
 
-      <!-- Placar geral -->
-      <section class="card-section">
-        <h2 class="section-title">Placar geral</h2>
+            <div class="divider"></div>
 
-        <div class="score-board">
-          <div id="card-erika" class="score-card erika">
-            <div class="score-left">
-              <span class="dot dot-erika"></span>
-              <span class="name">Érika</span>
-            </div>
-            <span class="score" id="score-erika">0</span>
-          </div>
+            <!-- Placar geral -->
+            <section class="card-section">
+                <h2 class="section-title">Placar geral</h2>
 
-          <div id="card-vinicius" class="score-card vinicius">
-            <div class="score-left">
-              <span class="dot dot-vinicius"></span>
-              <span class="name">Vinícius</span>
-            </div>
-            <span class="score" id="score-vinicius">0</span>
-          </div>
-        </div>
+                <div class="score-board">
+                    <div id="card-erika" class="score-card erika">
+                        <div class="score-left">
+                            <span class="dot dot-erika"></span>
+                            <span class="name">Érika</span>
+                        </div>
+                        <span class="score" id="score-erika">0</span>
+                    </div>
 
-        <p class="leader" id="leader-text">
-          Ninguém venceu ainda. Comecem a registrar as semanas! 🏁
-        </p>
-      </section>
+                    <div id="card-vinicius" class="score-card vinicius">
+                        <div class="score-left">
+                            <span class="dot dot-vinicius"></span>
+                            <span class="name">Vinícius</span>
+                        </div>
+                        <span class="score" id="score-vinicius">0</span>
+                    </div>
+                </div>
 
-      <div class="divider"></div>
+                <p class="leader" id="leader-text">
+                    Ninguém venceu ainda. Comecem a registrar as semanas! 🏁
+                </p>
+            </section>
 
-      <!-- Histórico -->
-      <section class="card-section">
-        <h2 class="section-title">Histórico de semanas</h2>
-        <ul id="weeks-list" class="weeks-list">
-          <!-- preenchido pelo JavaScript -->
-        </ul>
-      </section>
-    </main>
+            <div class="divider"></div>
 
-    <footer class="footer">
-      <p>
-        © 2025 Copyright ComoPode Produções
-      </p>
-    </footer>
-  </div>
+            <!-- Histórico -->
+            <section class="card-section">
+                <h2 class="section-title">Histórico de semanas</h2>
+                <ul id="weeks-list" class="weeks-list">
+                    <!-- preenchido pelo JavaScript -->
+                </ul>
+            </section>
+        </main>
 
-  <!-- Overlay de confirmação para Érika -->
-  <div id="confirm-overlay" class="overlay hidden">
-    <div class="modal">
-      <p class="modal-text">
-        Duvido que a Érika ganhou a semana...<br />
-        Tem certeza que não clicou errado?
-      </p>
-      <div class="modal-buttons">
-        <button id="confirm-erika" class="btn btn-erika small">
-          Sim, tenho certeza ✅
-        </button>
-        <button id="cancel-erika" class="btn btn-secondary small">
-          Ops, cliquei errado 🙈
-        </button>
-      </div>
+        <footer class="footer">
+            <p>
+                © 2025 Copyright ComoPode Produções
+            </p>
+        </footer>
     </div>
-  </div>
 
-  <!-- Toast para mensagens rápidas (ex: Vinícius) -->
-  <div id="toast" class="toast hidden"></div>
+    <!-- Overlay de confirmação para Érika -->
+    <div id="confirm-overlay" class="overlay hidden">
+        <div class="modal">
+            <p class="modal-text">
+                Duvido que a Érika ganhou a semana...<br />
+                Tem certeza que não clicou errado?
+            </p>
+            <div class="modal-buttons">
+                <button id="confirm-erika" class="btn btn-erika small">
+                    Sim, tenho certeza ✅
+                </button>
+                <button id="cancel-erika" class="btn btn-secondary small">
+                    Ops, cliquei errado 🙈
+                </button>
+            </div>
+        </div>
+    </div>
 
-  <script src="script.js"></script>
+    <!-- Toast para mensagens rápidas (ex: Vinícius) -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
