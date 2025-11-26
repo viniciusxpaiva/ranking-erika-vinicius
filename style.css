@@ -399,6 +399,24 @@ body {
     width: 100%;
     justify-content: center;
   }
+
+    .question {
+    font-size: 1.1rem;       /* um pouco menor no celular */
+    padding-right: 56px;     /* espaço reservado pro botão ⋯ */
+    text-align: left;        /* opcional: pode deixar center se preferir */
+  }
+
+  .card {
+    padding-top: 1.7rem;     /* um tiquinho mais de espaço no topo */
+  }
+
+  .icon-button {
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    font-size: 1.1rem;       /* botão um pouco menor no mobile */
+  }
 }
 
 /* Botão de opções (⋯) */
