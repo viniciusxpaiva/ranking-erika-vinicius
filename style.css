@@ -400,3 +400,37 @@ body {
   }
 }
 
+.controls-links {
+  margin-top: 0.35rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 0.78rem;
+  cursor: pointer;
+  padding: 0.1rem 0.2rem;
+  transition: color 0.15s ease, transform 0.1s ease, opacity 0.1s ease;
+}
+
+.link-btn:hover {
+  color: #e5e7eb;
+  transform: translateY(-0.5px);
+}
+
+.link-btn:active {
+  opacity: 0.8;
+  transform: translateY(0.5px);
+}
+
+.sep {
+  color: #475569;
+  font-size: 0.75rem;
+}

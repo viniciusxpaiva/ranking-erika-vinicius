@@ -42,7 +42,7 @@ function computeLeaderText(state) {
 
   const leader = e > v ? "Érika" : "Vinícius";
   const diff = Math.abs(e - v);
-  const emoji = e > v ? "🌊" : "🔥";
+  const emoji = e > v ? "🔥" : "🔥";
 
   return `${leader} está na frente por ${diff} vitória(s)! ${emoji}`;
 }
@@ -121,7 +121,7 @@ function registerWinner(winnerKey) {
 function undoLastWeek() {
   const state = loadState();
   if (state.weeks.length === 0) {
-    showToast("Não há semanas para desfazer. 😅");
+    showToast("Não há semanas para desfazer.");
     return;
   }
 
@@ -135,7 +135,7 @@ function undoLastWeek() {
   state.weeks.pop();
   saveState(state);
   render(state);
-  showToast("Última semana desfeita. ⏪");
+  showToast("Última semana desfeita.");
 }
 
 function resetAll() {
@@ -147,7 +147,7 @@ function resetAll() {
   const state = getInitialState();
   saveState(state);
   render(state);
-  showToast("Placar zerado, nova era começa agora. 🚀");
+  showToast("Placar zerado, nova era começa agora.");
 }
 
 /* Toast genérico */
@@ -198,19 +198,19 @@ document.addEventListener("DOMContentLoaded", () => {
   btnConfirmErika.addEventListener("click", () => {
     registerWinner("erika");
     closeErikaConfirmModal();
-    showToast("Olha só, vitória da Érika confirmada! 🌊");
+    showToast("Olha só, vitória da Érika!");
   });
 
   // Cancela Érika
   btnCancelErika.addEventListener("click", () => {
     closeErikaConfirmModal();
-    showToast("Ufa! Ainda bem que você conferiu. 😏");
+    showToast("Ufa! Ainda bem que você conferiu.");
   });
 
   // Clique no Vinícius -> registra direto + mensagem divertida
   btnVinicius.addEventListener("click", () => {
     registerWinner("vinicius");
-    showToast("Mais uma vitória dele hein, como pode? 😅");
+    showToast("Mais uma vitória dele hein, como pode?");
   });
 
   btnUndo.addEventListener("click", undoLastWeek);
