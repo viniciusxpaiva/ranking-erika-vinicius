@@ -92,6 +92,26 @@ body {
   color: #9ca3af;
 }
 
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* centra tudo por padrão */
+  position: relative;        /* ancora o dropdown */
+}
+
+.section-header .section-title {
+  flex: 1;
+  text-align: center;        /* centraliza texto */
+}
+
+/* botão fica à direita sem afetar o centro */
+.section-header .icon-button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 /* Botões principais */
 .buttons {
   display: flex;
@@ -399,49 +419,28 @@ body {
     width: 100%;
     justify-content: center;
   }
-
-    .question {
-    font-size: 1.1rem;       /* um pouco menor no celular */
-    padding-right: 56px;     /* espaço reservado pro botão ⋯ */
-    text-align: left;        /* opcional: pode deixar center se preferir */
-  }
-
-  .card {
-    padding-top: 1.7rem;     /* um tiquinho mais de espaço no topo */
-  }
-
-  .icon-button {
-    top: 8px;
-    right: 8px;
-    width: 28px;
-    height: 28px;
-    font-size: 1.1rem;       /* botão um pouco menor no mobile */
-  }
 }
 
 /* Botão de opções (⋯) */
+/* Botão ⋯ */
 .icon-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
   border: none;
-  background: rgba(15, 23, 42, 0.95);
+  background: #020617;
   color: #9ca3af;
-  font-size: 1.3rem;
-  line-height: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.2rem;
   cursor: pointer;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
-  transition: background 0.15s ease, transform 0.1s ease, color 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
 }
 
 .icon-button:hover {
-  background: #020617;
+  background: #0b1120;
   color: #e5e7eb;
   transform: translateY(-1px);
 }
@@ -450,27 +449,28 @@ body {
   transform: translateY(1px) scale(0.97);
 }
 
-/* Dropdown do menu */
+/* Dropdown do menu (escondido por padrão) */
 .menu-dropdown {
   position: absolute;
-  top: 44px;
-  right: 10px;
+  top: 130%;      /* logo abaixo do header */
+  right: 0;       /* alinhado à direita do título */
   background: #020617;
   border-radius: 14px;
   padding: 0.4rem 0.2rem;
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.9);
   border: 1px solid rgba(148, 163, 184, 0.5);
   min-width: 190px;
-  display: none;           /* escondido por padrão */
+  display: none;  /* escondido */
   flex-direction: column;
   z-index: 40;
 }
 
+/* Quando aberto (classe adicionada pelo JS) */
 .menu-dropdown.open {
-  display: flex;           /* aparece quando tem a classe .open */
+  display: flex;
 }
 
-/* Itens do menu */
+/* Itens dentro do menu */
 .menu-item {
   background: none;
   border: none;

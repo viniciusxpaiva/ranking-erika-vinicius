@@ -18,19 +18,6 @@
         <main class="card">
             <!-- Bloco principal -->
             <main class="card">
-                <!-- Botão de menu (⋯) + dropdown -->
-                <button id="options-button" class="icon-button" aria-label="Mais opções">
-                    ⋯
-                </button>
-                <div class="menu-dropdown" id="options-menu">
-                    <button id="btn-undo" class="menu-item">
-                        ⏪ Desfazer última semana
-                    </button>
-                    <button id="btn-reset" class="menu-item">
-                        🧹 Zerar tudo
-                    </button>
-                </div>
-
                 <!-- Bloco principal -->
                 <section class="card-section">
                     <h2 class="question">Quem venceu essa semana?</h2>
@@ -60,8 +47,26 @@
             <div class="divider"></div>
 
             <!-- Placar geral -->
+            <!-- Placar geral -->
             <section class="card-section">
-                <h2 class="section-title">Placar geral</h2>
+                <div class="section-header">
+                    <h2 class="section-title">Placar geral</h2>
+
+                    <!-- Botão de menu ⋯ -->
+                    <button id="options-button" class="icon-button" aria-label="Mais opções">
+                        ⋯
+                    </button>
+
+                    <!-- Menu dropdown -->
+                    <div class="menu-dropdown" id="options-menu">
+                        <button id="btn-undo" class="menu-item">
+                            ⏪ Desfazer última semana
+                        </button>
+                        <button id="btn-reset" class="menu-item">
+                            🧹 Zerar tudo
+                        </button>
+                    </div>
+                </div>
 
                 <div class="score-board">
                     <div id="card-erika" class="score-card erika">
@@ -85,6 +90,7 @@
                     Ninguém venceu ainda. Comecem a registrar as semanas! 🏁
                 </p>
             </section>
+
 
             <div class="divider"></div>
 
