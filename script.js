@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       const newState = await apiRegisterWinner("vinicius");
       render(newState);
-      showToast("Vitória da Érika!");
+      showToast("Vitória do Vinícius!");
     } catch (e) {
       showToast(e.message);
     }
