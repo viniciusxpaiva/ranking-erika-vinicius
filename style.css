@@ -319,57 +319,6 @@ body {
   color: #9ca3af;
 }
 
-/* Overlay de confirmação */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 50;
-}
-
-.overlay.hidden {
-  display: none;
-}
-
-.modal {
-  background: #020617;
-  border-radius: 18px;
-  padding: 1.4rem 1.4rem;
-  max-width: 360px;
-  width: 90%;
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.9);
-  animation: pop-in 0.18s ease-out;
-  border: 1px solid #22d3ee;
-}
-
-.modal-text {
-  color: #e5e7eb;
-  margin-bottom: 1rem;
-  text-align: center;
-  font-size: 0.95rem;
-}
-
-.modal-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-/* Animação modal */
-@keyframes pop-in {
-  from {
-    transform: scale(0.9) translateY(10px);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-  }
-}
-
 /* Toast */
 .toast {
   position: fixed;
